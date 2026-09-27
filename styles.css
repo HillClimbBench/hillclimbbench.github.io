@@ -74,7 +74,7 @@ main {
 }
 .signal i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 6px rgba(233, 91, 64, .12); animation: pulse 2.4s ease-in-out infinite; }
 @keyframes pulse { 50% { box-shadow: 0 0 0 11px rgba(233, 91, 64, 0); } }
-h1 { margin: 34px 0 30px; font: 400 clamp(68px, 7.4vw, 116px)/.88 var(--serif); letter-spacing: -.06em; }
+h1 { max-width: 780px; margin: 34px 0 30px; font: 400 clamp(58px, 6.2vw, 96px)/.94 var(--serif); letter-spacing: -.055em; }
 .intro { max-width: 590px; margin: 0; color: #aab2af; font: 400 clamp(19px, 1.75vw, 25px)/1.55 var(--serif); }
 .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 43px; }
 .button { height: 56px; padding: 0 24px; display: inline-flex; align-items: center; justify-content: center; gap: 24px; font-size: 12px; font-weight: 750; transition: transform .2s, background .2s, border-color .2s; }
