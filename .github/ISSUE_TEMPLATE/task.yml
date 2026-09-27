@@ -1,0 +1,45 @@
+name: Bring us a research task
+description: Tell HillClimbBench about a research task that should exist as a benchmark environment.
+title: "[Task]: "
+labels: ["research task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reaching out. A rough idea is enough—we can work through the details together.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is the research problem?
+      description: Describe the question, system, or technical direction you want an agent to investigate.
+      placeholder: We want to find out whether...
+    validations:
+      required: true
+  - type: textarea
+    id: experiments
+    attributes:
+      label: What would meaningful experimentation look like?
+      description: Tell us about the editable implementation, possible experiments, or research loop if known.
+    validations:
+      required: false
+  - type: textarea
+    id: evaluation
+    attributes:
+      label: How could progress be evaluated?
+      description: Include metrics, datasets, tests, or expert judgment that could distinguish better research outcomes.
+    validations:
+      required: false
+  - type: textarea
+    id: compute
+    attributes:
+      label: What resources might it need?
+      description: A rough estimate of GPUs, runtime, data, or specialized infrastructure is helpful but optional.
+    validations:
+      required: false
+  - type: textarea
+    id: contact
+    attributes:
+      label: Anything else?
+      description: Add relevant links or the best way to continue the conversation.
+    validations:
+      required: false

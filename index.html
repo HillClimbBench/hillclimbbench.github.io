@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="HillClimbBench is building something for autonomous AI research. Bring us your hardest research task." />
+    <meta name="theme-color" content="#121815" />
+    <meta property="og:title" content="HillClimbBench — We’re building." />
+    <meta property="og:description" content="Have an ambitious research task? We want to hear about it." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hillclimbbench.github.io/" />
+    <title>HillClimbBench — We’re building.</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise" aria-hidden="true"></div>
+    <header>
+      <a class="wordmark" href="/" aria-label="HillClimbBench home">
+        <span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>HillClimbBench</span>
+      </a>
+      <a class="github-link" href="https://github.com/HillClimbBench">GitHub <span>↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="signal"><i></i> Work in progress</div>
+        <h1>We’re building<br />the next hill.</h1>
+        <p class="intro">
+          A benchmark for AI systems that don’t just solve research problems—
+          they decide what to try next.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/HillClimbBench/hillclimbbench.github.io/issues/new?template=task.yml">
+            Bring us a task <span>↗</span>
+          </a>
+          <a class="button quiet" href="https://github.com/HillClimbBench">Watch the build</a>
+        </div>
+      </section>
+
+      <div class="terrain" aria-hidden="true">
+        <svg viewBox="0 0 920 760" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e95b40" stop-opacity=".45" />
+              <stop offset="1" stop-color="#e95b40" stop-opacity="0" />
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="8" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+          </defs>
+          <g class="contours">
+            <path d="M-50 735 C96 650 191 708 280 615 S467 642 557 506 706 462 970 188" />
+            <path d="M-50 775 C83 686 204 749 302 648 S478 682 583 540 745 503 970 252" />
+            <path d="M-50 815 C115 721 225 781 329 687 S505 714 610 580 765 548 970 317" />
+            <path d="M-50 855 C129 754 249 821 352 726 S538 761 646 623 797 594 970 383" />
+            <path d="M-50 895 C145 792 265 855 378 768 S562 802 677 666 825 642 970 451" />
+          </g>
+          <path class="mountain-fill" d="M-50 735 C96 650 191 708 280 615 S467 642 557 506 706 462 970 188 V800 H-50Z" />
+          <path class="ridge" d="M-50 735 C96 650 191 708 280 615 S467 642 557 506 706 462 970 188" />
+          <circle class="beacon-glow" cx="795" cy="368" r="18" />
+          <circle class="beacon" cx="795" cy="368" r="5" />
+        </svg>
+        <div class="coordinates">37.∞° N&nbsp;&nbsp; / &nbsp;&nbsp;122.?° W</div>
+      </div>
+
+      <aside class="invitation">
+        <p class="number">001</p>
+        <p>
+          Have a research task that demands experimentation, judgment, and real
+          compute? <a href="https://github.com/HillClimbBench/hillclimbbench.github.io/issues/new?template=task.yml">We want to hear about it.</a>
+        </p>
+      </aside>
+    </main>
+
+    <footer>
+      <p>Autonomous research at cluster scale.</p>
+      <p>© <span id="year">2026</span> HillClimbBench</p>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
