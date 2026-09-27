@@ -42,12 +42,7 @@ header {
   border-bottom: 1px solid var(--line);
 }
 .wordmark { display: inline-flex; align-items: center; gap: 13px; font-size: 17px; font-weight: 750; letter-spacing: -.03em; }
-.mark { width: 28px; height: 26px; display: flex; gap: 2px; align-items: end; transform: skew(-8deg); }
-.mark i { display: block; width: 5px; background: var(--paper); }
-.mark i:nth-child(1) { height: 7px; }
-.mark i:nth-child(2) { height: 13px; }
-.mark i:nth-child(3) { height: 20px; }
-.mark i:nth-child(4) { height: 26px; background: var(--accent); }
+.logo-mark { width: 34px; height: 34px; display: block; }
 .github-link { color: #a9b1ae; font-size: 12px; font-weight: 700; letter-spacing: .04em; }
 .github-link span { margin-left: 8px; color: var(--accent); }
 .github-link:hover { color: var(--paper); }
