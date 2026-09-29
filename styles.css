@@ -133,22 +133,16 @@ h1 span {
 
 .topography svg { width: 100%; height: 100%; display: block; overflow: visible; }
 
-.contours path {
+.surface path {
   fill: none;
-  stroke: rgba(238, 233, 223, .1);
   stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
-.terrain-wash { fill: url(#terrain-wash); }
-
-.primary-contours path:nth-child(1) { stroke: rgba(238, 233, 223, .06); }
-.primary-contours path:nth-child(2) { stroke: rgba(238, 233, 223, .08); }
-.primary-contours path:nth-child(3) { stroke: rgba(238, 233, 223, .1); }
-.primary-contours path:nth-child(4) { stroke: rgba(238, 233, 223, .13); }
-.primary-contours path:nth-child(5) { stroke: rgba(238, 233, 223, .16); }
-.primary-contours path:nth-child(6) { stroke: rgba(238, 233, 223, .2); }
-.secondary-contours { opacity: .45; }
+.surface-rows path { stroke: rgba(238, 233, 223, .15); }
+.surface-columns path { stroke: rgba(238, 233, 223, .08); }
 
 .route-glow,
 .route {
@@ -179,16 +173,8 @@ h1 span {
   stroke-width: 1.4;
   opacity: 0;
   animation: step-in .3s ease forwards;
+  animation-delay: calc(.65s + var(--step) * .16s);
 }
-
-.optimization-steps circle:nth-child(1) { animation-delay: .65s; }
-.optimization-steps circle:nth-child(2) { animation-delay: .88s; }
-.optimization-steps circle:nth-child(3) { animation-delay: 1.1s; }
-.optimization-steps circle:nth-child(4) { animation-delay: 1.32s; }
-.optimization-steps circle:nth-child(5) { animation-delay: 1.54s; }
-.optimization-steps circle:nth-child(6) { animation-delay: 1.76s; }
-.optimization-steps circle:nth-child(7) { animation-delay: 1.98s; }
-.optimization-steps circle:nth-child(8) { animation-delay: 2.2s; }
 
 .summit-glow {
   fill: var(--accent);

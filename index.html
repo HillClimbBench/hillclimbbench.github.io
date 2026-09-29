@@ -64,13 +64,8 @@
       </div>
 
       <div class="topography" aria-hidden="true">
-        <svg viewBox="0 0 900 780" preserveAspectRatio="xMidYMid meet">
+        <svg viewBox="0 0 920 760" preserveAspectRatio="xMidYMid meet">
           <defs>
-            <radialGradient id="terrain-wash" cx="64%" cy="35%" r="58%">
-              <stop offset="0" stop-color="#e95b40" stop-opacity=".09" />
-              <stop offset=".48" stop-color="#7b9187" stop-opacity=".035" />
-              <stop offset="1" stop-color="#101411" stop-opacity="0" />
-            </radialGradient>
             <linearGradient id="route-fade" x1="0" y1="1" x2="1" y2="0">
               <stop offset="0" stop-color="#e95b40" stop-opacity=".25" />
               <stop offset=".55" stop-color="#e95b40" stop-opacity=".72" />
@@ -81,47 +76,13 @@
             </filter>
           </defs>
 
-          <path
-            class="terrain-wash"
-            d="M94 716C39 604 95 502 177 443c70-51 111-113 151-203C374 138 468 65 582 58c120-8 232 53 275 163 43 109-7 233-101 293-93 61-171 37-269 85-114 56-284 228-393 117Z"
-          />
-
-          <g class="contours primary-contours">
-            <path d="M94 716C39 604 95 502 177 443c70-51 111-113 151-203C374 138 468 65 582 58c120-8 232 53 275 163 43 109-7 233-101 293-93 61-171 37-269 85-114 56-284 228-393 117Z" />
-            <path d="M171 659c-60-80-19-173 51-222 63-44 84-120 132-201 48-80 127-132 223-132 101 0 190 48 227 135 34 84-5 173-78 223-80 54-154 23-242 77-99 61-233 211-313 120Z" />
-            <path d="M257 603c-52-58-19-126 25-170 45-44 62-115 102-182 40-67 110-108 190-106 83 1 150 39 177 105 27 66-8 126-63 165-60 41-121 14-189 64-79 58-180 194-242 124Z" />
-            <path d="M348 536c-39-40-19-86 8-120 33-41 41-97 71-143 31-49 83-83 144-81 60 2 110 29 129 74 22 52-8 89-47 119-43 32-88 12-137 51-59 46-123 144-168 100Z" />
-            <path d="M436 467c-27-25-14-54 5-77 22-28 25-66 46-96 20-30 52-54 87-52 38 2 67 18 79 46 14 33-6 56-30 74-26 19-53 8-82 31-36 29-74 104-105 74Z" />
-            <path d="M515 397c-18-15-10-33 2-48 14-17 15-38 29-55 13-16 31-25 48-21 19 4 32 15 36 31 5 17-7 31-21 40-17 10-29 3-43 14-20 15-34 54-51 39Z" />
-          </g>
-
-          <g class="contours secondary-contours">
-            <path d="M686 751c-45-37-46-95-15-135 30-39 84-51 131-31 48 20 76 73 59 119-18 49-70 77-115 68-25-5-40-6-60-21Z" />
-            <path d="M720 718c-27-23-28-57-9-81 19-23 51-30 79-18 29 12 46 43 35 70-10 29-42 46-69 41-15-3-24-3-36-12Z" />
-            <path d="M751 691c-13-11-14-27-5-39 9-11 25-14 38-8 14 6 22 21 17 34-5 14-20 22-33 19-7-1-12-1-17-6Z" />
-          </g>
-
-          <path
-            class="route-glow"
-            d="M105 683C135 653 160 640 187 614s23-46 60-57 30-33 54-61 45-1 68-47 28-43 69-49 23-45 60-49 33-16 54-33 27-5 42-11"
-          />
-          <path
-            class="route"
-            pathLength="1"
-            d="M105 683C135 653 160 640 187 614s23-46 60-57 30-33 54-61 45-1 68-47 28-43 69-49 23-45 60-49 33-16 54-33 27-5 42-11"
-          />
-          <g class="optimization-steps">
-            <circle cx="105" cy="683" r="3" />
-            <circle cx="187" cy="614" r="3.2" />
-            <circle cx="247" cy="557" r="3.4" />
-            <circle cx="301" cy="496" r="3.6" />
-            <circle cx="369" cy="449" r="3.8" />
-            <circle cx="438" cy="400" r="4" />
-            <circle cx="498" cy="351" r="4.2" />
-            <circle cx="552" cy="318" r="4.4" />
-          </g>
-          <circle class="summit-glow" cx="594" cy="307" r="24" />
-          <circle class="summit" cx="594" cy="307" r="5" />
+          <g class="surface surface-rows" id="surface-rows"></g>
+          <g class="surface surface-columns" id="surface-columns"></g>
+          <path class="route-glow" id="route-glow" />
+          <path class="route" id="route" pathLength="1" />
+          <g class="optimization-steps" id="optimization-steps"></g>
+          <circle class="summit-glow" id="summit-glow" r="24" />
+          <circle class="summit" id="summit" r="5" />
         </svg>
       </div>
     </main>
@@ -130,5 +91,81 @@
       <p>© 2026 HillClimbBench</p>
       <a href="https://github.com/HillClimbBench/hillclimbbench.github.io#citation">Citation</a>
     </footer>
+
+    <script>
+      (() => {
+        const svgNamespace = "http://www.w3.org/2000/svg";
+        const rows = document.getElementById("surface-rows");
+        const columns = document.getElementById("surface-columns");
+
+        const elevation = (x, y) => {
+          const peak = 2.65 * Math.exp(-(.48 * (x - .45) ** 2 + .65 * (y - .15) ** 2));
+          const shoulder = .38 * Math.exp(-(1.4 * (x + 1.55) ** 2 + 1.15 * (y + .95) ** 2));
+          const texture = .07 * Math.sin(1.9 * x) * Math.cos(1.5 * y) * Math.exp(-.14 * (x ** 2 + y ** 2));
+          return .04 + peak + shoulder + texture;
+        };
+
+        const project = (x, y) => [
+          460 + 126 * x + 72 * y,
+          620 - 47 * y - 135 * elevation(x, y),
+        ];
+
+        const pathData = (points) => points
+          .map(([x, y], index) => `${index ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`)
+          .join("");
+
+        const addSurfaceLine = (parent, points) => {
+          const path = document.createElementNS(svgNamespace, "path");
+          path.setAttribute("d", pathData(points));
+          parent.appendChild(path);
+        };
+
+        for (let index = 12; index >= -12; index -= 2) {
+          const y = index / 5;
+          const points = Array.from({ length: 29 }, (_, step) => project(-2.5 + step * 5 / 28, y));
+          addSurfaceLine(rows, points);
+        }
+
+        for (let index = -12; index <= 12; index += 2) {
+          const x = index / 5;
+          const points = Array.from({ length: 29 }, (_, step) => project(x, -2.5 + step * 5 / 28));
+          addSurfaceLine(columns, points);
+        }
+
+        const iterations = [
+          [-1.9, -1.7],
+          [-1.55, -1.25],
+          [-1.16, -.9],
+          [-.8, -.58],
+          [-.42, -.32],
+          [-.12, -.12],
+          [.12, .03],
+          [.3, .12],
+          [.4, .16],
+          [.45, .17],
+        ].map(([x, y]) => project(x, y));
+
+        const route = pathData(iterations);
+        document.getElementById("route-glow").setAttribute("d", route);
+        document.getElementById("route").setAttribute("d", route);
+
+        const steps = document.getElementById("optimization-steps");
+        iterations.slice(0, -1).forEach(([x, y], index) => {
+          const point = document.createElementNS(svgNamespace, "circle");
+          point.setAttribute("cx", x.toFixed(1));
+          point.setAttribute("cy", y.toFixed(1));
+          point.setAttribute("r", (2.6 + index * .16).toFixed(1));
+          point.style.setProperty("--step", index);
+          steps.appendChild(point);
+        });
+
+        const [summitX, summitY] = iterations.at(-1);
+        for (const id of ["summit-glow", "summit"]) {
+          const point = document.getElementById(id);
+          point.setAttribute("cx", summitX.toFixed(1));
+          point.setAttribute("cy", summitY.toFixed(1));
+        }
+      })();
+    </script>
   </body>
 </html>
