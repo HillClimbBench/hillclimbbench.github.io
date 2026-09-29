@@ -1,8 +1,10 @@
-# HillClimbBench website
+# HillClimbBench
 
-The source for [hillclimbbench.github.io](https://hillclimbbench.github.io/).
+HillClimbBench is building the ecosystem for recursive self-improvement. It
+provides research environments where autonomous agents design and run
+experiments, manage compute at scale, and iteratively improve their solutions.
 
-This is a dependency-free static site. Open `index.html` locally to preview it.
+[Visit the HillClimbBench website](https://hillclimbbench.github.io/).
 
 ## Citation
 
