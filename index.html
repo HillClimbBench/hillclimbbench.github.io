@@ -52,7 +52,6 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
-        <a class="nav-secondary" href="#about">About</a>
         <a href="#release">Tasks</a>
         <a href="#contribute">Contribute</a>
         <a class="github" href="https://github.com/HillClimbBench">
@@ -92,22 +91,6 @@
       </div>
     </main>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="about-heading">
-        <p class="section-label">About</p>
-        <h2 id="about-title">Can AI agents discover and validate new model architectures?</h2>
-      </div>
-
-      <div class="about-copy">
-        <p>
-          Each task gives an agent a research problem, code, data, a cluster,
-          and a scheduler. The agent maintains competing hypotheses and assigns
-          each available worker to the highest-value experiment it can run. It
-          submits one model for evaluation on unseen data or harder conditions.
-        </p>
-      </div>
-    </section>
-
     <section class="release" id="release" aria-labelledby="release-title">
       <div class="release-heading">
         <div>
@@ -115,8 +98,10 @@
           <h2 id="release-title">Initial task suite</h2>
         </div>
         <p class="release-summary">
-          Two large-scale language-model tasks and a 50-task CPU suite. In each
-          one, the agent controls both the research plan and the compute budget.
+          Two large-scale language-model tasks and a 50-task CPU suite. The
+          agent manages compute through a scheduler, maintains competing
+          hypotheses, and assigns each worker to the highest-value experiment
+          available.
         </p>
       </div>
 
