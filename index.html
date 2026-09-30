@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="HillClimbBench evaluates meaningful architecture search by autonomous agents at cluster scale. Release 1.0 coming soon."
+      content="HillClimbBench evaluates evidence-driven architecture search by autonomous agents at cluster scale. Release 1.0 coming soon."
     />
     <meta name="theme-color" content="#101411" />
     <meta property="og:title" content="HillClimbBench — Coming soon" />
     <meta
       property="og:description"
-      content="Meaningful architecture search by autonomous agents at cluster scale. Release 1.0 coming soon."
+      content="Evidence-driven architecture search by autonomous agents at cluster scale. Release 1.0 coming soon."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hillclimbbench.github.io/" />
@@ -100,48 +100,15 @@
 
       <div class="about-copy">
         <p class="about-lede">
-          HillClimbBench tests whether AI agents can do real machine-learning
-          research.
+          HillClimbBench evaluates whether AI agents can conduct architecture
+          research under fixed compute budgets.
         </p>
         <p>
-          In each task, an agent receives a research problem, starting code,
-          data, a compute cluster, and a scheduler. It is not given a fixed
-          sequence of experiments. The agent maintains competing research
-          directions, decides which can run in parallel and which need pooled
-          resources, and continually asks what the highest-value experiment is
-          for each available worker given the evidence so far. It then submits
-          the best model it finds for evaluation.
+          Each task gives an agent a research problem, code, data, a cluster,
+          and a scheduler. The agent maintains competing hypotheses and assigns
+          each available worker to the highest-value experiment it can run. It
+          submits one model for evaluation on unseen data or harder conditions.
         </p>
-        <p>
-          The goal is meaningful architecture search. Agents formulate distinct
-          architectural hypotheses, implement them, compare them under controlled
-          conditions, and concentrate compute as evidence separates promising
-          directions. Hyperparameter sweeps or simply making an existing model
-          larger do not satisfy the research objective.
-        </p>
-      </div>
-
-      <div class="protocol" aria-label="Benchmark protocol">
-        <div>
-          <span>01</span>
-          <h3>Starting point</h3>
-          <p>A research question, starting code, training data, and tools.</p>
-        </div>
-        <div>
-          <span>02</span>
-          <h3>Cluster and scheduler</h3>
-          <p>The agent controls a fixed pool of GPU or CPU workers, wall time, storage, and evaluation calls.</p>
-        </div>
-        <div>
-          <span>03</span>
-          <h3>Resource allocation</h3>
-          <p>The agent compares research directions and assigns each available worker to the most valuable experiment it can run next.</p>
-        </div>
-        <div>
-          <span>04</span>
-          <h3>Final test</h3>
-          <p>The best model is tested on new data or under harder conditions.</p>
-        </div>
       </div>
     </section>
 
@@ -166,17 +133,11 @@
           <h3>HillClimbBench-RMT</h3>
           <p>
             Residual Matrix Transformers replace the usual vector-valued
-            residual stream with a matrix-valued outer-product memory. The
-            design aims to increase internal state capacity without a comparable
-            increase in parameters or nominal computation.
-          </p>
-          <p>
-            The agent must develop an improved RMT architecture—not simply tune
-            the supplied model—while retaining an active matrix residual stream.
-            It may change the architecture, kernels, numerical implementation,
-            and training procedure within a fixed allocation of four H200 GPUs
-            for ten hours. The final model is tested on a separate OpenWebText
-            evaluation split.
+            residual stream with a matrix-valued memory, expanding state capacity
+            while keeping parameter count and computation nearly fixed. The
+            agent has four H200 GPUs for ten hours to develop a new RMT
+            architecture, including changes to kernels and training. The final
+            model is tested on a separate OpenWebText split.
           </p>
           <div class="task-measure">
             <span>Measure</span>
@@ -192,16 +153,11 @@
           <h3>HillClimbBench-Loop</h3>
           <p>
             Depth-recurrent Transformers reuse a shared block across multiple
-            iterations, increasing computation without adding a separate set of
-            parameters at every depth. The open problem is keeping that repeated
-            computation useful rather than redundant or unstable.
-          </p>
-          <p>
-            The agent must discover and test an architectural principle that
-            improves recurrent state, transitions, routing, or computational
-            topology—not merely retune the starting model. Candidates stay below
-            350M unique parameters and train at fixed token budgets. The final
-            model is tested with the shared block applied exactly eight times.
+            iterations, increasing computation while sharing parameters across
+            depth. The agent searches for a new state, transition, routing, or
+            topology that makes additional iterations useful and stable.
+            Candidates stay below 350M unique parameters and train at fixed
+            token budgets; final evaluation applies the shared block eight times.
           </p>
           <div class="task-measure">
             <span>Measure</span>
@@ -220,15 +176,10 @@
             iterate on it under a limited compute budget?
             HillClimbBench-CPU contains 50 such problems spanning recurrent
             memory, equivariance, operator learning, attention, state-space
-            models, and other model families. Each can be trained from scratch
-            on one CPU thread.
-          </p>
-          <p>
-            The agent receives a technical summary, reference implementation,
-            fixed training setup, and a description of the harder final test. It
-            must propose, implement, and experimentally validate an architectural
-            improvement. The selected model and reference are retrained across
-            five seeds, and success requires a statistically significant gain.
+            models, and other model families. The agent receives a paper summary,
+            reference implementation, one CPU thread, and a harder final test.
+            It proposes, implements, and tests an architectural change. The
+            selected model and reference are retrained across five seeds.
           </p>
           <div class="task-measure">
             <span>Measure</span>
@@ -245,7 +196,7 @@
       </div>
       <div class="contribute-copy">
         <p>
-          Good task candidates pose a real research question, provide code an
+          Good task candidates pose a research question, provide code an
           agent can change, fit within a clear compute budget, and have a
           reliable way to test whether the result improved.
         </p>

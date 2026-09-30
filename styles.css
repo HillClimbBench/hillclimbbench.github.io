@@ -235,53 +235,6 @@ h1 span {
   line-height: 1.8;
 }
 
-.about-copy > p:not(.about-lede) + p {
-  margin-top: 18px;
-}
-
-.protocol {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-top: 68px;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.protocol > div {
-  min-height: 220px;
-  padding: 26px 28px 28px;
-  border-left: 1px solid var(--line);
-}
-
-.protocol > div:first-child {
-  padding-left: 0;
-  border-left: 0;
-}
-
-.protocol > div:last-child {
-  padding-right: 0;
-}
-
-.protocol span {
-  color: var(--accent);
-  font: 600 9px/1 var(--mono);
-  letter-spacing: .1em;
-}
-
-.protocol h3 {
-  margin: 46px 0 14px;
-  font: 400 20px/1.2 var(--serif);
-  letter-spacing: -.02em;
-}
-
-.protocol p {
-  margin: 0;
-  color: #7f8883;
-  font-size: 12px;
-  line-height: 1.7;
-}
-
 .release {
   padding: 120px 0 136px;
 }
@@ -360,16 +313,11 @@ h1 span {
 
 .task > p {
   grid-column: 2;
-  grid-row: 2;
+  grid-row: 2 / 4;
   margin: 46px 0 0;
   color: #8d9691;
   font-size: 13px;
   line-height: 1.75;
-}
-
-.task > p + p {
-  grid-row: 3;
-  margin-top: 16px;
 }
 
 .task-measure {
@@ -540,26 +488,6 @@ footer a:hover { color: var(--paper); }
     gap: 38px;
   }
 
-  .protocol {
-    grid-template-columns: 1fr 1fr;
-    margin-top: 24px;
-  }
-
-  .protocol > div,
-  .protocol > div:first-child,
-  .protocol > div:last-child {
-    padding: 26px;
-  }
-
-  .protocol > div:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .protocol > div:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-  }
-
   .release-heading {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -590,10 +518,6 @@ footer a:hover { color: var(--paper); }
 
   .task > p {
     margin-top: 0;
-  }
-
-  .task > p + p {
-    margin-top: 14px;
   }
 
   .task-measure {
@@ -635,22 +559,6 @@ footer a:hover { color: var(--paper); }
   h1 { font-size: clamp(60px, 18vw, 88px); }
   .status { margin-top: 38px; }
   .topography { inset: 29% -78% -3% -3%; }
-  .protocol { grid-template-columns: 1fr; }
-
-  .protocol > div,
-  .protocol > div:first-child,
-  .protocol > div:last-child,
-  .protocol > div:nth-child(odd) {
-    min-height: 0;
-    padding: 26px 0;
-    border-left: 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .protocol > div:first-child {
-    border-top: 0;
-  }
-
   footer { height: 92px; }
 }
 
