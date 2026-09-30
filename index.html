@@ -55,7 +55,6 @@
         <a class="nav-secondary" href="#about">About</a>
         <a href="#release">Tasks</a>
         <a href="#contribute">Contribute</a>
-        <a class="nav-secondary" href="#people">People</a>
         <a class="github" href="https://github.com/HillClimbBench">
           GitHub <span aria-hidden="true">↗</span>
         </a>
@@ -101,16 +100,15 @@
 
       <div class="about-copy">
         <p class="about-lede">
-          HillClimbBench evaluates autonomous research agents on open-ended
-          machine-learning problems with real training runs and fixed compute
-          budgets.
+          HillClimbBench tests whether AI agents can do real machine-learning
+          research.
         </p>
         <p>
-          Each task provides a starting implementation, research materials,
-          and access to a scheduler. The agent decides what to test, runs
-          experiments, selects a candidate, and submits an immutable artifact
-          for protected evaluation. HillClimbBench records the resulting model
-          together with its experiment lineage and resource use.
+          In each task, an agent receives a model, a research question,
+          computing resources, and time. It chooses experiments, trains new
+          versions, and submits the best result it finds. We then test that
+          result on data the agent has not seen and record the experiments and
+          compute used along the way.
         </p>
       </div>
 
@@ -118,22 +116,22 @@
         <div>
           <span>01</span>
           <h3>Starting point</h3>
-          <p>A pinned paper, reference implementation, data contract, and editable workspace.</p>
+          <p>A research question, starting code, training data, and tools.</p>
         </div>
         <div>
           <span>02</span>
           <h3>Research budget</h3>
-          <p>A fixed allocation of accelerators or CPU cores, wall time, storage, and evaluation calls.</p>
+          <p>A set amount of compute, time, storage, and evaluation feedback.</p>
         </div>
         <div>
           <span>03</span>
-          <h3>Experiment loop</h3>
-          <p>The agent chooses hypotheses, launches jobs, reads evidence, and decides what to retain.</p>
+          <h3>Research process</h3>
+          <p>The agent forms ideas, runs experiments, learns from results, and chooses what to try next.</p>
         </div>
         <div>
           <span>04</span>
-          <h3>Protected result</h3>
-          <p>A frozen submission is scored on data or conditions unavailable during research.</p>
+          <h3>Final test</h3>
+          <p>The best model is tested on new data or under harder conditions.</p>
         </div>
       </div>
     </section>
@@ -145,8 +143,7 @@
           <h2 id="release-title">Initial task suite</h2>
         </div>
         <p class="release-summary">
-          Two cluster-scale language-model architecture tasks and a 50-task
-          CPU architecture suite.
+          Two large-scale language-model tasks and a 50-task CPU suite.
         </p>
       </div>
 
@@ -154,54 +151,54 @@
         <article class="task">
           <div class="task-meta">
             <span>01</span>
-            <span>Language modeling · GPU</span>
+            <span>Language models · GPU</span>
           </div>
           <h3>HillClimbBench-RMT</h3>
           <p>
-            Improve Residual Matrix Transformer architectures from a pinned
-            reference implementation. Agents control experiments and training
-            within a fixed cluster allocation; submissions are ranked on a
-            protected, disjoint OpenWebText evaluation split.
+            Can an agent improve a new kind of language model under a fixed
+            compute budget? The agent designs and trains model variants, then
+            submits its best model. We score how well that model predicts unseen
+            text.
           </p>
           <div class="task-measure">
             <span>Measure</span>
-            <strong>Withheld-target cross-entropy ↓</strong>
+            <strong>Prediction quality on unseen text</strong>
           </div>
         </article>
 
         <article class="task">
           <div class="task-meta">
             <span>02</span>
-            <span>Architecture · GPU cluster</span>
+            <span>Reasoning architectures · GPU</span>
           </div>
           <h3>HillClimbBench-Loop</h3>
           <p>
-            Develop weight-tied recurrent-depth Transformers from the Huginn
-            reference. Candidates stay below 350M unique parameters and train
-            at fixed token-budget rungs before protected evaluation at exactly
-            eight recurrent iterations.
+            Can an agent design a language model that improves its predictions
+            by thinking through the same layers multiple times? The agent tests
+            architecture changes under fixed model-size and training budgets.
+            We score the final model on unseen text.
           </p>
           <div class="task-measure">
             <span>Measure</span>
-            <strong>Next-token cross-entropy ↓</strong>
+            <strong>Prediction quality on unseen text</strong>
           </div>
         </article>
 
         <article class="task">
           <div class="task-meta">
             <span>03</span>
-            <span>Architecture · CPU</span>
+            <span>50 architecture tasks · CPU</span>
           </div>
           <h3>HillClimbBench-CPU</h3>
           <p>
-            Fifty paper-derived architecture tasks, each small enough to train
-            from scratch on one CPU thread. Agents improve a supplied reference
-            under fixed training contracts; final evaluation tests harder
-            structural conditions across five seeds.
+            Can an agent turn ideas from machine-learning papers into better
+            small models? Across 50 tasks, the agent improves a provided model
+            using CPU-only experiments. We test whether its changes outperform
+            the starting model on harder unseen cases.
           </p>
           <div class="task-measure">
             <span>Measure</span>
-            <strong>Paired reference improvement ↑</strong>
+            <strong>Improvement over the starting model</strong>
           </div>
         </article>
       </div>
@@ -214,9 +211,9 @@
       </div>
       <div class="contribute-copy">
         <p>
-          Good candidates have an editable system, a repeatable experiment
-          loop, a clear resource envelope, and a protected evaluator that can
-          distinguish real improvement from tuning to a visible proxy.
+          Good task candidates pose a real research question, provide code an
+          agent can change, fit within a clear compute budget, and have a
+          reliable way to test whether the result improved.
         </p>
         <a
           class="contribute-link"
@@ -227,24 +224,9 @@
       </div>
     </section>
 
-    <section class="people" id="people" aria-labelledby="people-title">
-      <div class="people-heading">
-        <p class="section-label">People</p>
-        <h2 id="people-title">Team</h2>
-      </div>
-      <ol class="people-list">
-        <li><span>01</span><strong>Ankur Samanta</strong></li>
-        <li><span>02</span><strong>Vedant Shah</strong></li>
-        <li><span>03</span><strong>Paul Sajda</strong></li>
-        <li><span>04</span><strong>Kaveh Hassani</strong></li>
-        <li><span>05</span><strong>Anirudh Goyal</strong></li>
-      </ol>
-    </section>
-
     <section class="citation" id="citation" aria-labelledby="citation-title">
       <div>
-        <p class="section-label">Citation</p>
-        <h2 id="citation-title">Cite HillClimbBench</h2>
+        <p class="section-label" id="citation-title">Citation</p>
       </div>
 
       <div class="citation-content">
