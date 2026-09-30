@@ -228,11 +228,15 @@ h1 span {
   letter-spacing: -.015em;
 }
 
-.about-copy > p:last-child {
+.about-copy > p:not(.about-lede) {
   margin: 0;
   color: #89928d;
   font-size: 14px;
   line-height: 1.8;
+}
+
+.about-copy > p:not(.about-lede) + p {
+  margin-top: 18px;
 }
 
 .protocol {
