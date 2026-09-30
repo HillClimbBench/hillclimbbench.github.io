@@ -51,16 +51,19 @@
         </svg>
       </a>
 
-      <a class="github" href="https://github.com/HillClimbBench">
-        GitHub <span aria-hidden="true">↗</span>
-      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#release">Release 1.0</a>
+        <a class="github" href="https://github.com/HillClimbBench">
+          GitHub <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
     </header>
 
     <main>
       <div class="copy">
         <p class="eyebrow">Autonomous research at cluster scale</p>
         <h1>HillClimb<span>Bench</span></h1>
-        <p class="status"><i aria-hidden="true"></i> Coming soon</p>
+        <p class="status"><i aria-hidden="true"></i> Release 1.0 · Coming soon</p>
       </div>
 
       <div class="topography" aria-hidden="true">
@@ -86,6 +89,75 @@
         </svg>
       </div>
     </main>
+
+    <section class="release" id="release" aria-labelledby="release-title">
+      <div class="release-heading">
+        <div>
+          <p class="section-label">Release 1.0</p>
+          <h2 id="release-title">Initial task suite</h2>
+        </div>
+        <p class="release-summary">
+          Two cluster-scale language-model architecture tasks and a 50-task
+          CPU architecture suite.
+        </p>
+      </div>
+
+      <div class="task-grid">
+        <article class="task">
+          <div class="task-meta">
+            <span>01</span>
+            <span>Language modeling · GPU</span>
+          </div>
+          <h3>HillClimbBench-RMT</h3>
+          <p>
+            Improve Residual Matrix Transformer architectures from a pinned
+            reference implementation. Agents control experiments and training
+            within a fixed cluster allocation; submissions are ranked on a
+            protected, disjoint OpenWebText evaluation split.
+          </p>
+          <div class="task-measure">
+            <span>Measure</span>
+            <strong>Withheld-target cross-entropy ↓</strong>
+          </div>
+        </article>
+
+        <article class="task">
+          <div class="task-meta">
+            <span>02</span>
+            <span>Architecture · GPU cluster</span>
+          </div>
+          <h3>HillClimbBench-Loop</h3>
+          <p>
+            Develop weight-tied recurrent-depth Transformers from the Huginn
+            reference. Candidates stay below 350M unique parameters and train
+            at fixed token-budget rungs before protected evaluation at exactly
+            eight recurrent iterations.
+          </p>
+          <div class="task-measure">
+            <span>Measure</span>
+            <strong>Next-token cross-entropy ↓</strong>
+          </div>
+        </article>
+
+        <article class="task">
+          <div class="task-meta">
+            <span>03</span>
+            <span>Architecture · CPU</span>
+          </div>
+          <h3>HillClimbBench-CPU</h3>
+          <p>
+            Fifty paper-derived architecture tasks, each small enough to train
+            from scratch on one CPU thread. Agents improve a supplied reference
+            under fixed training contracts; final evaluation tests harder
+            structural conditions across five seeds.
+          </p>
+          <div class="task-measure">
+            <span>Measure</span>
+            <strong>Paired reference improvement ↑</strong>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <footer>
       <p>© 2026 HillClimbBench</p>
