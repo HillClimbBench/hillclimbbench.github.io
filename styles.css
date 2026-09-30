@@ -36,7 +36,8 @@ a { color: inherit; text-decoration: none; }
 header,
 footer,
 main,
-.release {
+.release,
+.citation {
   width: min(1440px, calc(100% - 96px));
   margin-inline: auto;
 }
@@ -301,6 +302,44 @@ h1 span {
   text-align: right;
 }
 
+.citation {
+  padding: 88px 0 104px;
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 64px;
+  position: relative;
+  z-index: 3;
+  border-top: 1px solid var(--line);
+}
+
+.citation h2 {
+  margin: 0;
+  font: 400 clamp(36px, 3.5vw, 52px)/1.05 var(--serif);
+  letter-spacing: -.04em;
+}
+
+.citation-text {
+  max-width: 680px;
+  margin: 2px 0 30px;
+  color: #a5aca8;
+  font: 400 17px/1.65 var(--serif);
+}
+
+.citation-text cite {
+  color: var(--paper);
+}
+
+.citation pre {
+  margin: 0;
+  padding: 22px 0;
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: #89928d;
+  font: 400 11px/1.75 var(--mono);
+  white-space: pre-wrap;
+}
+
 footer {
   height: 80px;
   display: flex;
@@ -343,7 +382,7 @@ footer a:hover { color: var(--paper); }
 }
 
 @media (max-width: 900px) {
-  header, footer, main, .release { width: min(100% - 44px, 680px); }
+  header, footer, main, .release, .citation { width: min(100% - 44px, 680px); }
 
   main {
     min-height: calc(100svh - 104px);
@@ -391,6 +430,12 @@ footer a:hover { color: var(--paper); }
 
   .task-measure {
     margin-top: 42px;
+  }
+
+  .citation {
+    padding: 76px 0 88px;
+    grid-template-columns: 1fr;
+    gap: 42px;
   }
 }
 
