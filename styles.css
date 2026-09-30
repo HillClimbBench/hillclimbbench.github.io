@@ -36,7 +36,10 @@ a { color: inherit; text-decoration: none; }
 header,
 footer,
 main,
+.about,
 .release,
+.contribute,
+.people,
 .citation {
   width: min(1440px, calc(100% - 96px));
   margin-inline: auto;
@@ -191,12 +194,95 @@ h1 span {
 
 .summit { fill: var(--paper); stroke: var(--accent); stroke-width: 3; }
 
-.release {
-  padding: 120px 0 136px;
+.about,
+.release,
+.contribute,
+.people,
+.citation {
   position: relative;
   z-index: 3;
   background: var(--ink);
   border-top: 1px solid var(--line);
+}
+
+.about {
+  padding: 120px 0 132px;
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 64px;
+}
+
+.about h2,
+.contribute h2,
+.people h2 {
+  margin: 0;
+  font: 400 clamp(42px, 4.2vw, 64px)/1 var(--serif);
+  letter-spacing: -.045em;
+}
+
+.about-copy {
+  max-width: 710px;
+}
+
+.about-lede {
+  margin: 0 0 24px;
+  color: var(--paper);
+  font: 400 clamp(20px, 2vw, 27px)/1.5 var(--serif);
+  letter-spacing: -.015em;
+}
+
+.about-copy > p:last-child {
+  margin: 0;
+  color: #89928d;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.protocol {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 68px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.protocol > div {
+  min-height: 220px;
+  padding: 26px 28px 28px;
+  border-left: 1px solid var(--line);
+}
+
+.protocol > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.protocol > div:last-child {
+  padding-right: 0;
+}
+
+.protocol span {
+  color: var(--accent);
+  font: 600 9px/1 var(--mono);
+  letter-spacing: .1em;
+}
+
+.protocol h3 {
+  margin: 46px 0 14px;
+  font: 400 20px/1.2 var(--serif);
+  letter-spacing: -.02em;
+}
+
+.protocol p {
+  margin: 0;
+  color: #7f8883;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.release {
+  padding: 120px 0 136px;
 }
 
 .release-heading {
@@ -302,14 +388,99 @@ h1 span {
   text-align: right;
 }
 
+.contribute {
+  padding: 96px 0 106px;
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 64px;
+}
+
+.contribute-copy {
+  max-width: 700px;
+}
+
+.contribute-copy p {
+  margin: 0 0 32px;
+  color: #919a95;
+  font: 400 18px/1.7 var(--serif);
+}
+
+.contribute-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(233, 91, 64, .5);
+  color: var(--paper);
+  font: 600 10px/1 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.contribute-link span {
+  color: var(--accent);
+}
+
+.contribute-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.people {
+  padding: 88px 0 100px;
+}
+
+.people-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.people-list {
+  margin: 58px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.people-list li {
+  min-height: 132px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--line);
+}
+
+.people-list li:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.people-list li:last-child {
+  padding-right: 0;
+}
+
+.people-list span {
+  color: var(--accent);
+  font: 600 9px/1 var(--mono);
+}
+
+.people-list strong {
+  color: #aeb5b1;
+  font: 500 14px/1.4 var(--sans);
+}
+
 .citation {
   padding: 88px 0 104px;
   display: grid;
   grid-template-columns: .7fr 1.3fr;
   gap: 64px;
-  position: relative;
-  z-index: 3;
-  border-top: 1px solid var(--line);
 }
 
 .citation h2 {
@@ -357,6 +528,11 @@ footer {
 footer a { transition: color .2s ease; }
 footer a:hover { color: var(--paper); }
 
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
 @keyframes enter {
   from { opacity: 0; transform: translateY(18px); }
 }
@@ -382,7 +558,9 @@ footer a:hover { color: var(--paper); }
 }
 
 @media (max-width: 900px) {
-  header, footer, main, .release, .citation { width: min(100% - 44px, 680px); }
+  header, footer, main, .about, .release, .contribute, .people, .citation {
+    width: min(100% - 44px, 680px);
+  }
 
   main {
     min-height: calc(100svh - 104px);
@@ -399,6 +577,33 @@ footer a:hover { color: var(--paper); }
 
   .release {
     padding: 96px 0 110px;
+  }
+
+  .about,
+  .contribute {
+    padding: 96px 0 106px;
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .protocol {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 24px;
+  }
+
+  .protocol > div,
+  .protocol > div:first-child,
+  .protocol > div:last-child {
+    padding: 26px;
+  }
+
+  .protocol > div:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .protocol > div:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
   }
 
   .release-heading {
@@ -437,6 +642,30 @@ footer a:hover { color: var(--paper); }
     grid-template-columns: 1fr;
     gap: 42px;
   }
+
+  .people {
+    padding: 76px 0 88px;
+  }
+
+  .people-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .people-list li,
+  .people-list li:first-child,
+  .people-list li:last-child {
+    min-height: 112px;
+    padding: 20px;
+  }
+
+  .people-list li:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .people-list li:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
 }
 
 @media (max-width: 560px) {
@@ -452,6 +681,10 @@ footer a:hover { color: var(--paper); }
     font-size: 9px;
   }
 
+  .nav-secondary {
+    display: none;
+  }
+
   .eyebrow {
     max-width: 240px;
     margin-bottom: 28px;
@@ -461,6 +694,39 @@ footer a:hover { color: var(--paper); }
   h1 { font-size: clamp(60px, 18vw, 88px); }
   .status { margin-top: 38px; }
   .topography { inset: 29% -78% -3% -3%; }
+  .protocol { grid-template-columns: 1fr; }
+
+  .protocol > div,
+  .protocol > div:first-child,
+  .protocol > div:last-child,
+  .protocol > div:nth-child(odd) {
+    min-height: 0;
+    padding: 26px 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .protocol > div:first-child {
+    border-top: 0;
+  }
+
+  .people-list {
+    grid-template-columns: 1fr;
+  }
+
+  .people-list li,
+  .people-list li:first-child,
+  .people-list li:last-child,
+  .people-list li:nth-child(odd) {
+    padding: 20px 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .people-list li:first-child {
+    border-top: 0;
+  }
+
   footer { height: 92px; }
 }
 

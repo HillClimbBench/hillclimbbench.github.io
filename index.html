@@ -52,7 +52,10 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
-        <a href="#release">Release 1.0</a>
+        <a class="nav-secondary" href="#about">About</a>
+        <a href="#release">Tasks</a>
+        <a href="#contribute">Contribute</a>
+        <a class="nav-secondary" href="#people">People</a>
         <a class="github" href="https://github.com/HillClimbBench">
           GitHub <span aria-hidden="true">↗</span>
         </a>
@@ -89,6 +92,51 @@
         </svg>
       </div>
     </main>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-heading">
+        <p class="section-label">About</p>
+        <h2 id="about-title">About the benchmark</h2>
+      </div>
+
+      <div class="about-copy">
+        <p class="about-lede">
+          HillClimbBench evaluates autonomous research agents on open-ended
+          machine-learning problems with real training runs and fixed compute
+          budgets.
+        </p>
+        <p>
+          Each task provides a starting implementation, research materials,
+          and access to a scheduler. The agent decides what to test, runs
+          experiments, selects a candidate, and submits an immutable artifact
+          for protected evaluation. HillClimbBench records the resulting model
+          together with its experiment lineage and resource use.
+        </p>
+      </div>
+
+      <div class="protocol" aria-label="Benchmark protocol">
+        <div>
+          <span>01</span>
+          <h3>Starting point</h3>
+          <p>A pinned paper, reference implementation, data contract, and editable workspace.</p>
+        </div>
+        <div>
+          <span>02</span>
+          <h3>Research budget</h3>
+          <p>A fixed allocation of accelerators or CPU cores, wall time, storage, and evaluation calls.</p>
+        </div>
+        <div>
+          <span>03</span>
+          <h3>Experiment loop</h3>
+          <p>The agent chooses hypotheses, launches jobs, reads evidence, and decides what to retain.</p>
+        </div>
+        <div>
+          <span>04</span>
+          <h3>Protected result</h3>
+          <p>A frozen submission is scored on data or conditions unavailable during research.</p>
+        </div>
+      </div>
+    </section>
 
     <section class="release" id="release" aria-labelledby="release-title">
       <div class="release-heading">
@@ -159,6 +207,40 @@
       </div>
     </section>
 
+    <section class="contribute" id="contribute" aria-labelledby="contribute-title">
+      <div>
+        <p class="section-label">Contribute</p>
+        <h2 id="contribute-title">Propose a task</h2>
+      </div>
+      <div class="contribute-copy">
+        <p>
+          Good candidates have an editable system, a repeatable experiment
+          loop, a clear resource envelope, and a protected evaluator that can
+          distinguish real improvement from tuning to a visible proxy.
+        </p>
+        <a
+          class="contribute-link"
+          href="https://github.com/HillClimbBench/hillclimbbench.github.io/issues/new?template=task.yml"
+        >
+          Submit a research task <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="people" id="people" aria-labelledby="people-title">
+      <div class="people-heading">
+        <p class="section-label">People</p>
+        <h2 id="people-title">Team</h2>
+      </div>
+      <ol class="people-list">
+        <li><span>01</span><strong>Ankur Samanta</strong></li>
+        <li><span>02</span><strong>Vedant Shah</strong></li>
+        <li><span>03</span><strong>Paul Sajda</strong></li>
+        <li><span>04</span><strong>Kaveh Hassani</strong></li>
+        <li><span>05</span><strong>Anirudh Goyal</strong></li>
+      </ol>
+    </section>
+
     <section class="citation" id="citation" aria-labelledby="citation-title">
       <div>
         <p class="section-label">Citation</p>
@@ -181,7 +263,10 @@
 
     <footer>
       <p>© 2026 HillClimbBench</p>
-      <a href="#citation">Citation</a>
+      <div class="footer-links">
+        <a href="#citation">Citation</a>
+        <a href="LICENSE">MIT License</a>
+      </div>
     </footer>
 
     <script>
